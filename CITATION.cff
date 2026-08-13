@@ -84,12 +84,18 @@ keywords:
   - patient-specific modelling
   - Windkessel calibration
   - 4D flow MRI
-# Set at the v1.0.0 release, 13 August 2026. This is the Zenodo VERSION DOI, not
-# the concept DOI: it identifies this release specifically, which is what a paper
-# should cite. The concept DOI resolves to whichever version is newest.
-version: 1.0.0
+# This is the CONCEPT DOI, which always resolves to the newest version. A version
+# DOI cannot be correct here: it does not exist until the release is published,
+# by which point this file is already archived inside it — v1.0.0 shipped with a
+# CITATION.cff that could not name its own DOI. The concept DOI has no such
+# problem and never goes stale.
+#
+# A paper should still cite the VERSION DOI of the release its results came from,
+# which is shown on the Zenodo record for that version; the concept DOI does not
+# pin the code. v1.0.0 is 10.5281/zenodo.21925126.
+version: 1.0.1
 date-released: 2026-08-13
-doi: 10.5281/zenodo.21925126
+doi: 10.5281/zenodo.21925125
 preferred-citation:
   type: article
   title: >-

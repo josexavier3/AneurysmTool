@@ -19,7 +19,7 @@ directory with its own documentation and environment specification.
 
 | Directory | What it does | Status |
 |---|---|---|
-| [`aorta-mesh-morphing/`](aorta-mesh-morphing/) | Boundary-condition generation and parameter calibration for mesh-morphing CFD of the thoracic aorta: cine-CTA wall-motion tracking, inlet velocity from 4D flow MRI, wall motion by RBF morphing, Windkessel outlet calibration, wall-stiffness calibration | Pre-release |
+| [`aorta-mesh-morphing/`](aorta-mesh-morphing/) | Boundary-condition generation and parameter calibration for mesh-morphing CFD of the thoracic aorta: cine-CTA wall-motion tracking, inlet velocity from 4D flow MRI, wall motion by RBF morphing, Windkessel outlet calibration, wall-stiffness calibration | Released |
 
 Components are added as they are released.
 

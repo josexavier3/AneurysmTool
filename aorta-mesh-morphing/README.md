@@ -4,8 +4,9 @@ Methodological code for constructing image-derived moving-wall boundary conditio
 outlet and wall parameters for thoracic-aorta haemodynamics. This component underpins the manuscript
 being prepared for *Computer Methods and Programs in Biomedicine*.
 
-> **Pre-release.** The repository is being prepared for its first public archival release. Do not
-> cite it until a versioned release and DOI are available.
+> **Released.** `v1.0.0` is archived at
+> [doi:10.5281/zenodo.21925126](https://doi.org/10.5281/zenodo.21925126). Cite that version DOI, or
+> the one for whichever release the results came from, rather than the `main` branch, which changes.
 
 ## Public release boundary
 
@@ -149,6 +150,6 @@ contracts. They do not replace execution with `svOneDSolver` or `svFSI`.
 ## Licence and citation
 
 Code is licensed under Apache License 2.0; see [`../LICENSE`](../LICENSE) and
-[`../NOTICE`](../NOTICE). Citation metadata is in [`../CITATION.cff`](../CITATION.cff). Its version,
-release date and DOI will be completed when the first immutable release is archived. Cite the
-version DOI corresponding to the code used, not the mutable `main` branch.
+[`../NOTICE`](../NOTICE). Citation metadata is in [`../CITATION.cff`](../CITATION.cff), which records
+the released version, its date and its DOI. Cite the version DOI corresponding to the code used, not
+the mutable `main` branch.
