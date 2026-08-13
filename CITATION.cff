@@ -92,12 +92,12 @@ keywords:
   - patient-specific modelling
   - Windkessel calibration
   - 4D flow MRI
-# TODO Fill in at the release: uncomment and set to the tag, the release date and
-# the Zenodo VERSION DOI (not the concept DOI) — the version DOI identifies the
-# code the published results came from.
-# version: 1.0.0
-# date-released: YYYY-MM-DD
-# doi: 10.5281/zenodo.XXXXXXX
+# Set at the v1.0.0 release, 13 August 2026. This is the Zenodo VERSION DOI, not
+# the concept DOI: it identifies this release specifically, which is what a paper
+# should cite. The concept DOI resolves to whichever version is newest.
+version: 1.0.0
+date-released: 2026-08-13
+doi: 10.5281/zenodo.21925126
 preferred-citation:
   type: article
   title: >-
