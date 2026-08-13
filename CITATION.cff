@@ -1,0 +1,133 @@
+cff-version: 1.2.0
+title: Aorta mesh-morphing haemodynamics pipeline
+message: >-
+  If you use this software, please cite both the software (this record) and the
+  associated article listed under preferred-citation.
+type: software
+abstract: >-
+  Boundary-condition generation and parameter calibration for patient-specific
+  thoracic-aorta haemodynamics, where the computational domain follows wall
+  kinematics measured in the patient rather than a wall material model. Covers
+  inlet velocity from 4D flow MRI, wall motion by radial-basis-function morphing,
+  Windkessel outlet calibration and wall-stiffness calibration. Also includes the
+  cine-CTA wall-motion tracking step that supplies the measured kinematics,
+  published here for the first time. A wholly synthetic example executes and
+  quantitatively checks the wall-morphing stage. Patient-derived inputs are not
+  distributed; solver configurations are neutral, non-runnable templates.
+  Segmentation and volumetric meshing are upstream and not included. This release
+  covers the aorta-mesh-morphing component of the AneurysmTool project repository,
+  which is its entire content at this version.
+# The software author list is not the article's. André Mourato and Alda Carvalho
+# are authors of the wall-motion tracking step, released here for the first time
+# (see NOTICE), and not of the article under preferred-citation.
+authors:
+  - given-names: Rodrigo
+    family-names: Valente
+    orcid: https://orcid.org/0000-0003-0871-0683
+    affiliation: >-
+      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
+      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
+  - given-names: André
+    family-names: Mourato
+    orcid: https://orcid.org/0000-0002-2996-1951
+    affiliation: >-
+      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
+      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
+  - given-names: Alda
+    family-names: Carvalho
+    orcid: https://orcid.org/0000-0003-2642-4947
+    affiliation: Department of Sciences and Technology, Universidade Aberta
+  - given-names: José
+    family-names: Xavier
+    orcid: https://orcid.org/0000-0002-7836-4598
+    email: jmc.xavier@fct.unl.pt
+    affiliation: >-
+      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
+      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
+  - given-names: Moisés
+    family-names: Brito
+    orcid: https://orcid.org/0000-0002-7024-9958
+    affiliation: >-
+      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
+      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
+  - given-names: Stéphane
+    family-names: Avril
+    orcid: https://orcid.org/0000-0002-8604-7736
+    affiliation: >-
+      Mines Saint-Etienne, University of Lyon, Inserm, Sainbiose U1059,
+      Saint-Etienne, France
+  - given-names: Tiago
+    family-names: Silva
+    orcid: https://orcid.org/0000-0002-5065-7938
+    affiliation: >-
+      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
+      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
+  - given-names: António
+    family-names: Tomás
+    orcid: https://orcid.org/0000-0002-9144-2669
+    affiliation: >-
+      Department of Cardiothoracic Surgery, Santa Marta Hospital (ULS São José),
+      Lisboa, Portugal
+  - given-names: João
+    family-names: Inácio
+    orcid: https://orcid.org/0000-0003-3210-3285
+    affiliation: Department of Radiology, CUF Tejo, Lisboa, Portugal
+  - given-names: José
+    family-names: Fragata
+    orcid: https://orcid.org/0000-0002-4493-8178
+    affiliation: >-
+      Department of Cardiothoracic Surgery, Santa Marta Hospital (ULS São José),
+      Lisboa, Portugal
+license: Apache-2.0
+repository-code: https://github.com/josexavier3/AneurysmTool
+# The component this record describes. repository-code names the repository, which
+# is the project umbrella; this is where the released code actually lives, and is
+# the path a paper should quote alongside the version DOI.
+url: https://github.com/josexavier3/AneurysmTool/tree/main/aorta-mesh-morphing
+keywords:
+  - thoracic aorta
+  - mesh morphing
+  - computational fluid dynamics
+  - fluid-structure interaction
+  - patient-specific modelling
+  - Windkessel calibration
+  - 4D flow MRI
+# TODO Fill in at the release: uncomment and set to the tag, the release date and
+# the Zenodo VERSION DOI (not the concept DOI) — the version DOI identifies the
+# code the published results came from.
+# version: 1.0.0
+# date-released: YYYY-MM-DD
+# doi: 10.5281/zenodo.XXXXXXX
+preferred-citation:
+  type: article
+  title: >-
+    Patient-Specific Mesh-Morphing CFD of the Thoracic Aorta Driven by Measured
+    Wall Kinematics: A Comparison with Rigid-Wall and Fully Coupled FSI Models
+  authors:
+    - given-names: Rodrigo
+      family-names: Valente
+      orcid: https://orcid.org/0000-0003-0871-0683
+    - given-names: José
+      family-names: Xavier
+      orcid: https://orcid.org/0000-0002-7836-4598
+    - given-names: Moisés
+      family-names: Brito
+      orcid: https://orcid.org/0000-0002-7024-9958
+    - given-names: Stéphane
+      family-names: Avril
+      orcid: https://orcid.org/0000-0002-8604-7736
+    - given-names: Tiago
+      family-names: Silva
+      orcid: https://orcid.org/0000-0002-5065-7938
+    - given-names: António
+      family-names: Tomás
+      orcid: https://orcid.org/0000-0002-9144-2669
+    - given-names: João
+      family-names: Inácio
+      orcid: https://orcid.org/0000-0003-3210-3285
+    - given-names: José
+      family-names: Fragata
+      orcid: https://orcid.org/0000-0002-4493-8178
+  journal: Computer Methods and Programs in Biomedicine
+  year: 2026
+  # TODO Add the article DOI once accepted.

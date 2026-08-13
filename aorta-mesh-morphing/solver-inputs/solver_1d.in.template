@@ -1,0 +1,33 @@
+# Non-runnable svOneDSolver calibration template.
+#
+# The NODE, JOINT, SEGMENT and material cards are intentionally absent because they
+# describe the case geometry. Generate them from an authorised or synthetic network.
+# Stage 3 rewrites the four RCR blocks and the SOLVEROPTIONS line below.
+
+MODEL {{MODEL_NAME}}
+
+DATATABLE RCR_0 LIST
+0.0 {{RCR0_RP}}
+0.0 {{RCR0_C}}
+0.0 {{RCR0_RD}}
+ENDDATATABLE
+
+DATATABLE RCR_1 LIST
+0.0 {{RCR1_RP}}
+0.0 {{RCR1_C}}
+0.0 {{RCR1_RD}}
+ENDDATATABLE
+
+DATATABLE RCR_2 LIST
+0.0 {{RCR2_RP}}
+0.0 {{RCR2_C}}
+0.0 {{RCR2_RD}}
+ENDDATATABLE
+
+DATATABLE RCR_3 LIST
+0.0 {{RCR3_RP}}
+0.0 {{RCR3_C}}
+0.0 {{RCR3_RD}}
+ENDDATATABLE
+
+SOLVEROPTIONS {{TIME_STEP_SECONDS}} 1 {{NUMBER_OF_TIME_STEPS}} 2 INFLOW FLOW 1.0e-5 1 1

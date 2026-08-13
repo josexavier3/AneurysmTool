@@ -1,0 +1,140 @@
+# Non-runnable moving-wall svFSI template. Replace every {{TOKEN}}.
+
+Continue previous simulation: {{CONTINUE_PREVIOUS_SIMULATION}}
+Number of spatial dimensions: 3
+Number of time steps: {{NUMBER_OF_TIME_STEPS}}
+Time step size: {{TIME_STEP_SECONDS}}
+Spectral radius of infinite time step: 0.8
+Save results to VTK format: t
+Name prefix of saved VTK files: moving_wall
+Save results in folder: moving_wall_results
+Increment in saving VTK files: {{VTK_SAVE_INCREMENT}}
+
+Add mesh: mesh {
+   Mesh scale factor: {{MESH_SCALE_FACTOR}}
+   Mesh file path: {{FLUID_VOLUME_MESH}}
+   Add face: inlet { Face file path: {{INLET_FACE}} }
+   Add face: outlet { Face file path: {{OUTLET_FACE}} }
+   Add face: outlet1 { Face file path: {{OUTLET1_FACE}} }
+   Add face: outlet2 { Face file path: {{OUTLET2_FACE}} }
+   Add face: outlet3 { Face file path: {{OUTLET3_FACE}} }
+   Add face: wall { Face file path: {{WALL_FACE}} }
+   Domain: 1
+}
+
+Add equation: FSI {
+   Coupled: t
+   Min iterations: 3
+   Max iterations: 20
+   Tolerance: 1e-4
+
+   Domain: 1 {
+      Equation: fluid
+      Density: {{FLUID_DENSITY}}
+      Viscosity: Constant {Value: {{DYNAMIC_VISCOSITY}}}
+      Backflow stabilization coefficient: 0.4
+   }
+
+   LS type: GMRES {
+      Preconditioner: Trilinos-ML
+      Max iterations: 800
+      Tolerance: 1e-5
+      Krylov space dimension: 100
+   }
+
+   Initialize RCR from flow: t
+   Add BC: inlet {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{INLET_VELOCITY_FILE}}
+      Impose flux: t
+   }
+   Add BC: outlet {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET_RP}}, {{OUTLET_C}}, {{OUTLET_RD}})
+   }
+   Add BC: outlet1 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET1_RP}}, {{OUTLET1_C}}, {{OUTLET1_RD}})
+   }
+   Add BC: outlet2 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET2_RP}}, {{OUTLET2_C}}, {{OUTLET2_RD}})
+   }
+   Add BC: outlet3 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET3_RP}}, {{OUTLET3_C}}, {{OUTLET3_RD}})
+   }
+   Add BC: wall {
+      Type: Dir
+      Time dependence: Steady
+      Value: 0.0
+   }
+}
+
+Add equation: mesh {
+   Coupled: t
+   Min iterations: 1
+   Max iterations: 15
+   Tolerance: 1e-3
+   Poisson ratio: 0.45
+
+   Add BC: wall {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_INTERFACE}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+   Add BC: inlet {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_INLET}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+   Add BC: outlet {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_OUTLET}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+   Add BC: outlet1 {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_OUTLET1}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+   Add BC: outlet2 {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_OUTLET2}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+   Add BC: outlet3 {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{WALL_MOTION_OUTLET3}}
+      Profile: Flat
+      Zero out perimeter: t
+      Impose flux: 0
+      Impose on state variable integral: t
+   }
+}

@@ -1,0 +1,54 @@
+# Cross-platform environment for this pipeline. Solves on Linux, macOS and Windows.
+#
+#     conda env create -f environment.yml
+#     conda activate d_view
+#
+# Only the packages the code imports are pinned, each at the version used in the
+# study; conda resolves the rest for the platform in hand. The exact Windows
+# environment the published results were produced in is recorded separately, in
+# environment-windows-study.yml — that file is a record, not an installer, and it
+# does not solve off Windows.
+#
+# One package present in that record is deliberately absent here: `tetgen` (the
+# PyPI package) is imported nowhere and is unrelated to the TetGen used for
+# volumetric meshing, which is invoked through SimVascular.
+#
+# `openpyxl` was absent for the same reason until August 2026, when the tracking
+# step arrived: select_cut.py reads the root landmarks from a per-case .xlsx, and
+# pandas needs openpyxl for that. VMTK is *not* pinned — centerline_simp's VMTK
+# path is disabled and was not installed in the study environment either; see that
+# module's docstring.
+
+name: d_view
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10.19
+
+  # Numerics. SciPy supplies the RBF and cubic temporal interpolation.
+  - numpy=2.2.6
+  - scipy=1.15.2
+  - pandas=2.3.3
+  - openpyxl=3.1.5      # pandas' Excel reader, for select_cut.py's root landmarks
+
+  # Surface handling, remeshing and registration.
+  - pyvista=0.46.5
+  - pyacvd=0.3.3
+  - open3d=0.19.0
+
+  - matplotlib-base=3.10.8
+
+  # Notebook execution.
+  - ipykernel=7.1.0
+
+  - pip
+  - pip:
+      - pydicom==3.0.1      # 4D flow DICOM decoding
+      - trimesh==4.11.1
+      # trimesh's boolean engine, which it does not install itself. The Dice
+      # coefficient in tracking-validation/3_score.ipynb intersects two meshes and
+      # fails with "No boolean backend" without it.
+      - manifold3d==3.5.2
+      - tqdm==4.67.3

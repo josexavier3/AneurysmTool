@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Editors
+.vscode/
+.idea/
+
+# Local configuration holding real data paths and imaging-archive identifiers.
+# Only the *_example.py templates are committed; never a filled-in copy.
+# Matched at any depth, so the rules survive a component moving.
+**/config/local*
+!**/config/local_example.py
+**/config/*_private*
+
+# Solver working directories created by the calibration loops
+run_iter*/
+iteration_*/
+
+# Output of the synthetic phantom generator: ~200 MB of meshes and one array,
+# all of it reproduced exactly by running make_phantom.py. The generator is what
+# is distributed, which is also the clearer provenance argument. The pre-commit
+# guard refuses these extensions in any case.
+**/examples/phantom/data/
+
+# Anything the tracking-step validation notebooks write when they are run.
+**/tracking-validation/data/
+
+# Everything that belongs to preparing the deposit rather than to the deposit:
+# the internal design record, correspondence drafts, and the files that arrived
+# as attachments. What arrives this way gets read, integrated where it belongs,
+# and recorded — the raw material is not itself deposit material.
+#
+# One directory rather than a rule per file, so that the boundary is visible on
+# disk and nothing new has to be remembered.
+/internal/
+
+# Kept as well, so that a draft or an attachment dropped outside internal/ by
+# habit is still refused.
+email-*.md
+**/Rodrigo/

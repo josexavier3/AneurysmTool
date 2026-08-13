@@ -1,0 +1,31 @@
+# Non-runnable structural-cycle template. Replace every {{TOKEN}}.
+
+Number of spatial dimensions: 3
+Number of time steps: {{STRUCTURAL_CYCLE_TIME_STEPS}}
+Time step size: {{TIME_STEP_SECONDS}}
+Save results to VTK format: t
+Increment in saving VTK files: {{VTK_SAVE_INCREMENT}}
+
+Add mesh: solid {
+   Mesh scale factor: {{MESH_SCALE_FACTOR}}
+   Mesh file path: {{SOLID_VOLUME_MESH}}
+   Add face: interface { Face file path: {{SOLID_INTERFACE_FACE}} }
+   Add face: inlet { Face file path: {{SOLID_INLET_FACE}} }
+   Add face: outlet { Face file path: {{SOLID_OUTLET_FACE}} }
+   Add face: outlet1 { Face file path: {{SOLID_OUTLET1_FACE}} }
+   Add face: outlet2 { Face file path: {{SOLID_OUTLET2_FACE}} }
+   Add face: outlet3 { Face file path: {{SOLID_OUTLET3_FACE}} }
+   Prestress file path: {{PRESTRESS_RESULT}}
+   Domain: 1
+}
+
+Add equation: CMM {
+   Coupled: t
+   Domain: 1 {
+      Equation: struct
+      Density: {{SOLID_DENSITY}}
+      Poisson ratio: {{POISSON_RATIO}}
+   Elasticity modulus: {{ELASTICITY_MODULUS_DYN_PER_CM2}}
+      Constitutive model: nHK
+   }
+}

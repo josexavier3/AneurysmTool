@@ -1,0 +1,80 @@
+# Non-runnable rigid-wall svFSI template. Replace every {{TOKEN}}.
+#
+# No authoritative rigid-wall study deck was available for this release. This
+# file documents the interface only; numerical controls are placeholders rather
+# than inferred claims about the simulation reported in the paper.
+
+Continue previous simulation: {{CONTINUE_PREVIOUS_SIMULATION}}
+Number of spatial dimensions: 3
+Number of time steps: {{NUMBER_OF_TIME_STEPS}}
+Time step size: {{TIME_STEP_SECONDS}}
+Spectral radius of infinite time step: {{SPECTRAL_RADIUS}}
+Save results to VTK format: t
+Name prefix of saved VTK files: rigid_wall
+Save results in folder: rigid_wall_results
+Increment in saving VTK files: {{VTK_SAVE_INCREMENT}}
+
+Add mesh: mesh {
+   Mesh scale factor: {{MESH_SCALE_FACTOR}}
+   Mesh file path: {{FLUID_VOLUME_MESH}}
+   Add face: inlet { Face file path: {{INLET_FACE}} }
+   Add face: outlet { Face file path: {{OUTLET_FACE}} }
+   Add face: outlet1 { Face file path: {{OUTLET1_FACE}} }
+   Add face: outlet2 { Face file path: {{OUTLET2_FACE}} }
+   Add face: outlet3 { Face file path: {{OUTLET3_FACE}} }
+   Add face: wall { Face file path: {{WALL_FACE}} }
+   Domain: 1
+}
+
+Add equation: fluid {
+   Coupled: t
+   Min iterations: {{MIN_NONLINEAR_ITERATIONS}}
+   Max iterations: {{MAX_NONLINEAR_ITERATIONS}}
+   Tolerance: {{NONLINEAR_TOLERANCE}}
+
+   Domain: 1 {
+      Density: {{FLUID_DENSITY}}
+      Viscosity: Constant {Value: {{DYNAMIC_VISCOSITY}}}
+      Backflow stabilization coefficient: {{BACKFLOW_STABILIZATION}}
+   }
+
+   LS type: GMRES {
+      Preconditioner: {{PRECONDITIONER}}
+      Max iterations: {{MAX_LINEAR_ITERATIONS}}
+      Tolerance: {{LINEAR_TOLERANCE}}
+      Krylov space dimension: {{KRYLOV_DIMENSION}}
+   }
+
+   Initialize RCR from flow: t
+   Add BC: inlet {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{INLET_VELOCITY_FILE}}
+      Impose flux: t
+   }
+   Add BC: outlet {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET_RP}}, {{OUTLET_C}}, {{OUTLET_RD}})
+   }
+   Add BC: outlet1 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET1_RP}}, {{OUTLET1_C}}, {{OUTLET1_RD}})
+   }
+   Add BC: outlet2 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET2_RP}}, {{OUTLET2_C}}, {{OUTLET2_RD}})
+   }
+   Add BC: outlet3 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET3_RP}}, {{OUTLET3_C}}, {{OUTLET3_RD}})
+   }
+   Add BC: wall {
+      Type: Dir
+      Time dependence: Steady
+      Value: 0.0
+   }
+}

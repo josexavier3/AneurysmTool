@@ -1,0 +1,51 @@
+Aorta mesh-morphing haemodynamics pipeline
+Copyright 2026 Rodrigo Valente, José Xavier, Moisés Brito, Stéphane Avril,
+Tiago Silva, António Tomás, João Inácio, José Fragata
+
+Developed under the AneurysmTool project, Fundação para a Ciência e a Tecnologia
+(FCT), DOI: 10.54499/PTDC/EMD-EMD/1230/2021, with UNIDEMI (UID/00667/2025).
+
+Licensed under the Apache License, Version 2.0; see LICENSE.
+Example data, where included, is licensed CC-BY-4.0.
+
+This product invokes but does not redistribute SimVascular (svFSI, svOneDSolver)
+and TetGen, each available under its own open-source licence.
+
+The wall-motion tracking step — aorta-mesh-morphing/select_cut.py,
+aorta-mesh-morphing/deformation.py and aorta-mesh-morphing/centerline_simp.py —
+is the implementation of the deformation-tracking framework first published as:
+
+    R. Valente, A. Mourato, A. Carvalho, J. Xavier, M. Brito, S. Avril,
+    A. Tomás, J. Fragata. Patient-Specific In-vivo Dynamic Motion of Ascending
+    Thoracic Aortic Aneurysms from Cine CTA. IEEE Transactions on Biomedical
+    Engineering (2026). doi:10.1109/TBME.2026.3681119
+
+No code was released with that paper. It is published here for the first time,
+with the agreement of its authors, given in August 2026. Two of them, André
+Mourato and Alda Carvalho, are authors of this software but not of the article
+this repository accompanies.
+
+This product includes code derived from flow4D, used to decode the 4D flow MRI
+acquisitions:
+
+    flow4D
+    Copyright (c) 2022 saitta-s
+    https://github.com/saitta-s/flow4D
+    doi:10.5281/zenodo.7236015
+    Licensed under the MIT License.
+
+The functions concerned are get_dz, read_acquisition and seriesData_to_arrayData
+in aorta-mesh-morphing/suport_mri.py, which carries the full MIT licence text and
+the copyright notice. The first is identical to flow4D's, the second differs in
+detail, the third has been substantially reworked. The remainder of that file is
+the authors' own and has no counterpart in flow4D.
+
+GENERATIVE AI AND AI-ASSISTED TECHNOLOGIES
+
+During preparation of this code for public release, the authors used Claude
+(Anthropic) to support refactoring towards a configuration interface, the
+synthetic phantom example and its verification, documentation, and consistency
+checks across files. This tool was not used to design the study, perform the
+simulations, generate or analyse data, produce figures, or determine the
+scientific conclusions. The authors reviewed, tested and edited all AI-assisted
+output and take full responsibility for the content of this repository.

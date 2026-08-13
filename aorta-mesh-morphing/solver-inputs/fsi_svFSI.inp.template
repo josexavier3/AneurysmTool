@@ -1,0 +1,90 @@
+# Non-runnable fully coupled FSI template. Replace every {{TOKEN}}.
+
+Continue previous simulation: {{CONTINUE_PREVIOUS_SIMULATION}}
+Number of spatial dimensions: 3
+Number of time steps: {{NUMBER_OF_TIME_STEPS}}
+Time step size: {{TIME_STEP_SECONDS}}
+Spectral radius of infinite time step: 0.8
+
+Add mesh: fluid {
+   Mesh scale factor: {{MESH_SCALE_FACTOR}}
+   Mesh file path: {{FLUID_VOLUME_MESH}}
+   Add face: inlet { Face file path: {{FLUID_INLET_FACE}} }
+   Add face: outlet { Face file path: {{FLUID_OUTLET_FACE}} }
+   Add face: outlet1 { Face file path: {{FLUID_OUTLET1_FACE}} }
+   Add face: outlet2 { Face file path: {{FLUID_OUTLET2_FACE}} }
+   Add face: outlet3 { Face file path: {{FLUID_OUTLET3_FACE}} }
+   Add face: interface { Face file path: {{FLUID_INTERFACE_FACE}} }
+   Domain: 1
+}
+
+Add mesh: solid {
+   Mesh scale factor: {{MESH_SCALE_FACTOR}}
+   Mesh file path: {{SOLID_VOLUME_MESH}}
+   Add face: S_interface { Face file path: {{SOLID_INTERFACE_FACE}} }
+   Add face: S_inlet { Face file path: {{SOLID_INLET_FACE}} }
+   Add face: S_out { Face file path: {{SOLID_OUTLET_FACE}} }
+   Add face: S_out1 { Face file path: {{SOLID_OUTLET1_FACE}} }
+   Add face: S_out2 { Face file path: {{SOLID_OUTLET2_FACE}} }
+   Add face: S_out3 { Face file path: {{SOLID_OUTLET3_FACE}} }
+   Prestress file path: {{PRESTRESS_RESULT}}
+   Domain: 2
+}
+
+Add projection: interface { Project from face: S_interface }
+
+Add equation: FSI {
+   Coupled: 1
+   Min iterations: 3
+   Max iterations: 15
+   Tolerance: 1e-4
+
+   Domain: 1 {
+      Equation: fluid
+      Density: {{FLUID_DENSITY}}
+      Viscosity: Constant {Value: {{DYNAMIC_VISCOSITY}}}
+      Backflow stabilization coefficient: 0.2
+   }
+   Domain: 2 {
+      Equation: struct
+      Density: {{SOLID_DENSITY}}
+      Poisson ratio: {{POISSON_RATIO}}
+      Elasticity modulus: {{ELASTICITY_MODULUS_DYN_PER_CM2}}
+      Constitutive model: nHK
+      Dilational penalty model: Quad
+   }
+
+   LS type: GMRES {
+      Preconditioner: Trilinos-ML
+      Max iterations: 500
+      Tolerance: 1e-5
+      Krylov space dimension: 40
+   }
+
+   Add BC: inlet {
+      Type: Dir
+      Time dependence: General
+      Temporal and spatial values file path: {{INLET_VELOCITY_FILE}}
+      Impose flux: t
+   }
+   Add BC: outlet {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET_RP}}, {{OUTLET_C}}, {{OUTLET_RD}})
+   }
+   Add BC: outlet1 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET1_RP}}, {{OUTLET1_C}}, {{OUTLET1_RD}})
+   }
+   Add BC: outlet2 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET2_RP}}, {{OUTLET2_C}}, {{OUTLET2_RD}})
+   }
+   Add BC: outlet3 {
+      Type: Neu
+      Time dependence: RCR
+      RCR values: ({{OUTLET3_RP}}, {{OUTLET3_C}}, {{OUTLET3_RD}})
+   }
+}

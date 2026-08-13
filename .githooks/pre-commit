@@ -1,0 +1,68 @@
+#!/bin/sh
+# Refuse to commit anything patient-derived.
+#
+# Enable once per clone:
+#     git config core.hooksPath .githooks
+#
+# The four checks below are the four ways material has actually leaked into this
+# project's history before: data files, notebook outputs holding anatomy
+# renderings, a filled-in local configuration, and hardcoded archive paths.
+#
+# To override deliberately: git commit --no-verify
+
+fail=0
+note() { printf 'pre-commit: %s\n' "$1" >&2; fail=1; }
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+# 1. Imaging, geometry and serialised arrays. Nothing patient-derived is distributed.
+data=$(printf '%s\n' "$staged" |
+	grep -iE '\.(dcm|dicom|nii|nii\.gz|img|hdr|mha|mhd|nrrd|stl|ply|obj|vtp|vtu|vtk|vti|pvd|npy|npz|mat|in|inp)$')
+if [ -n "$data" ]; then
+	note "data files staged:"
+	printf '  %s\n' $data >&2
+	note "imaging, meshes, solver decks and serialised arrays are not distributed; unstage them."
+fi
+
+# 2. Notebook outputs. This is where the anatomy renderings were: stripping the
+#    working tree is not enough, because re-running a notebook puts them back.
+nbs=$(printf '%s\n' "$staged" | grep '\.ipynb$')
+for nb in $nbs; do
+	dirty=$(git show ":$nb" | python3 -c '
+import json, sys
+try:
+    nb = json.load(sys.stdin)
+except ValueError:
+    sys.exit(0)
+n = sum(1 for c in nb.get("cells", []) if c.get("outputs"))
+print(n if n else "", end="")
+')
+	[ -n "$dirty" ] && note "$nb carries $dirty output block(s); run: nbstripout $nb"
+done
+
+# 3. The filled-in local configuration, which holds the real paths and the
+#    imaging-archive identifiers. Only the template is tracked.
+locals=$(printf '%s\n' "$staged" | grep -E '(^|/)config/local\.py$')
+if [ -n "$locals" ]; then
+	note "staged: $locals — only config/local_example.py belongs in git."
+fi
+
+# 4. Archive paths and account names that earlier revisions carried. This file is
+#    skipped: it holds the patterns themselves.
+for f in $staged; do
+	[ "$f" = ".githooks/pre-commit" ] && continue
+	git show ":$f" 2>/dev/null |
+		grep -nIiE 'rdrgv|OneDrive|C:\\Users|/mnt/c/Users' |
+		while read -r hit; do
+			printf 'pre-commit: %s: %s\n' "$f" "$hit" >&2
+		done
+	git show ":$f" 2>/dev/null | grep -qIiE 'rdrgv|OneDrive|C:\\Users|/mnt/c/Users' &&
+		fail=1
+done
+
+[ "$fail" -ne 0 ] && {
+	printf 'pre-commit: commit refused.\n' >&2
+	exit 1
+}
+exit 0
