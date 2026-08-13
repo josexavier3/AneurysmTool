@@ -21,9 +21,10 @@ is the implementation of the deformation-tracking framework first published as:
     Engineering (2026). doi:10.1109/TBME.2026.3681119
 
 No code was released with that paper. It is published here for the first time,
-with the agreement of its authors, given in August 2026. Two of them, André
-Mourato and Alda Carvalho, are authors of this software but not of the article
-this repository accompanies.
+with the agreement of its authors, given in August 2026. That citation is the
+credit for the method: its author list records who published the framework, and
+differs from the authors of this software, who are those listed in CITATION.cff
+and in the article this repository accompanies.
 
 This product includes code derived from flow4D, used to decode the 4D flow MRI
 acquisitions:

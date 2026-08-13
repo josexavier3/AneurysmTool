@@ -17,12 +17,11 @@ abstract: >-
   Segmentation and volumetric meshing are upstream and not included. This release
   covers the aorta-mesh-morphing component of the AneurysmTool project repository,
   which is its entire content at this version.
-# The software author list is not the article's, and is ordered to make that
-# visible rather than to hide it: the authors shared with the article come first,
-# in the article's own order, then André Mourato and Alda Carvalho, who are
-# authors of the wall-motion tracking step released here for the first time (see
-# NOTICE) and not of the article under preferred-citation, then the clinical
-# authors.
+# The authors of this software, in the order of the article under
+# preferred-citation, which this release accompanies. The wall-motion tracking
+# step implements a framework published earlier, and that paper is cited in full
+# in NOTICE: its author list is the credit for the method, and is not the same as
+# the list of people who wrote the code released here.
 authors:
   - given-names: Rodrigo
     family-names: Valente
@@ -55,16 +54,6 @@ authors:
     affiliation: >-
       UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
       of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
-  - given-names: André
-    family-names: Mourato
-    orcid: https://orcid.org/0000-0002-2996-1951
-    affiliation: >-
-      UNIDEMI, Department of Mechanical and Industrial Engineering, NOVA School
-      of Science and Technology, Universidade NOVA de Lisboa, Caparica, Portugal
-  - given-names: Alda
-    family-names: Carvalho
-    orcid: https://orcid.org/0000-0003-2642-4947
-    affiliation: Department of Sciences and Technology, Universidade Aberta
   - given-names: António
     family-names: Tomás
     orcid: https://orcid.org/0000-0002-9144-2669
