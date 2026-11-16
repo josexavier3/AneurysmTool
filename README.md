@@ -20,7 +20,7 @@ directory with its own documentation and environment specification.
 | Directory | What it does | Status |
 |---|---|---|
 | [`aorta-mesh-morphing/`](aorta-mesh-morphing/) | Boundary-condition generation and parameter calibration for mesh-morphing CFD of the thoracic aorta: cine-CTA wall-motion tracking, inlet velocity from 4D flow MRI, wall motion by RBF morphing, Windkessel outlet calibration, wall-stiffness calibration | Released |
-| [`ataa-stress-surrogate/`](ataa-stress-surrogate/) | DNN wall-stress surrogate, synthetic example, and geometry-grouped training/evaluation pipeline; trained weights and clinical data excluded | Published; no archived release yet |
+| [`ataa-stress-surrogate/`](ataa-stress-surrogate/) | DNN wall-stress surrogate, synthetic example, and geometry-grouped training/evaluation pipeline; trained weights and clinical data excluded | Released, [doi:10.5281/zenodo.24291234](https://doi.org/10.5281/zenodo.24291234) |
 
 Components are added as they are released.
 
@@ -69,6 +69,12 @@ because what it resolves to changes as the project grows.
 
 For a paper, give the version DOI together with the path to the component in the living
 repository, so that a reader has both the fixed artefact and the maintained code.
+
+Each component has its own Zenodo record, with the authors of that component and of the article
+it accompanies. `aorta-mesh-morphing` is archived through this repository's GitHub releases
+(v1.0.1: [10.5281/zenodo.21925399](https://doi.org/10.5281/zenodo.21925399));
+`ataa-stress-surrogate` is archived as a separate record
+(v1.0.0: [10.5281/zenodo.24291234](https://doi.org/10.5281/zenodo.24291234)).
 
 ## Licence and citation
 

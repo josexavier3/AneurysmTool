@@ -6,6 +6,10 @@ repository. It accompanies the
 manuscript *A deep neural network surrogate for ascending thoracic aortic aneurysm wall
 stress: accuracy, uncertainty and domain transfer*.
 
+> **Released.** Version 1.0.0 is archived on Zenodo as its own record,
+> [doi:10.5281/zenodo.24291234](https://doi.org/10.5281/zenodo.24291234). Cite that DOI rather
+> than the `main` branch, which changes.
+
 The component contains the multilayer-perceptron definition, fitted scalers, a patient-free
 synthetic example, and the code used for geometry-grouped training and evaluation. The trained
 checkpoint is deliberately not distributed in GitHub or Zenodo; it remains in the frozen private

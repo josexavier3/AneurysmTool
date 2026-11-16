@@ -36,6 +36,11 @@ authors:
 license: Apache-2.0
 repository-code: https://github.com/josexavier3/AneurysmTool
 url: https://github.com/josexavier3/AneurysmTool/tree/main/ataa-stress-surrogate
+# Zenodo record for this component alone, separate from the record of the
+# repository's GitHub releases (aorta-mesh-morphing).
+version: 1.0.0
+date-released: 2026-11-16
+doi: 10.5281/zenodo.24291234
 keywords:
   - ascending thoracic aortic aneurysm
   - computational solid mechanics
