@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+
+# pipeline scratch (created at runtime) and the (unshipped) dataset
+pipeline/work/
+pipeline/dataset/

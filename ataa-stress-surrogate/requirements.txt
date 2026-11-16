@@ -1,0 +1,3 @@
+# Minimal dependencies for the bundled inference demo.
+numpy>=1.24,<3
+torch>=2.0,<3

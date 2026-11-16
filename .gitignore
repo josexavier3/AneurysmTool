@@ -40,3 +40,18 @@ iteration_*/
 # habit is still refused.
 email-*.md
 **/Rodrigo/
+
+# ATAA stress-surrogate runtime data and private trained checkpoints
+ataa-stress-surrogate/pipeline/work/
+ataa-stress-surrogate/pipeline/dataset/
+*.pth
+*.pt
+*.ckpt
+
+# Local AI assistant guidance and configuration
+AGENTS.md
+AGENTS.override.md
+CLAUDE.md
+.agents/
+.claude/
+.codex/

@@ -1,0 +1,7 @@
+Example data (example_synthetic.npz) — Creative Commons Attribution 4.0 International
+(CC-BY-4.0).
+
+These are 50 synthetic, PCA-sampled ATAA loading-state rows and their CSM reference fields; they
+contain no patient data and do not represent 50 independent geometries or simulation runs. You are
+free to share and adapt them with attribution to the accompanying paper.
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode

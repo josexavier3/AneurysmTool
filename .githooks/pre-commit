@@ -16,13 +16,24 @@ note() { printf 'pre-commit: %s\n' "$1" >&2; fail=1; }
 staged=$(git diff --cached --name-only --diff-filter=ACM)
 [ -z "$staged" ] && exit 0
 
-# 1. Imaging, geometry and serialised arrays. Nothing patient-derived is distributed.
+# 1. Reject restricted data and weights. Only the three reviewed synthetic/demo
+# assets are allowed, with exact hashes checked against the staged blobs.
 data=$(printf '%s\n' "$staged" |
-	grep -iE '\.(dcm|dicom|nii|nii\.gz|img|hdr|mha|mhd|nrrd|stl|ply|obj|vtp|vtu|vtk|vti|pvd|npy|npz|mat|in|inp)$')
+	grep -iE '\.(dcm|dicom|nii|nii\.gz|img|hdr|mha|mhd|nrrd|stl|ply|obj|vtp|vtu|vtk|vti|pvd|npy|npz|mat|in|inp|pth|pt|ckpt)$' |
+	while IFS= read -r file; do
+		case "$file" in
+			ataa-stress-surrogate/models/cardiac_grouped_free_input_scaler.npz) expected=42a0362930f992768c2bfa7199f990df5b706a2a37aa09a65ce1374401171119 ;;
+			ataa-stress-surrogate/models/cardiac_grouped_free_output_scaler.npz) expected=748030217489a515af0ea54e69e3c6ea28dc0dd815be81937527058812a68193 ;;
+			ataa-stress-surrogate/data/example_synthetic.npz) expected=9758baff7f724cbada36860a5f23098c332b7223740b1299622d7e672e60cb89 ;;
+			*) printf '%s\n' "$file"; continue ;;
+		esac
+		actual=$(git show ":$file" | python3 -c 'import hashlib, sys; print(hashlib.sha256(sys.stdin.buffer.read()).hexdigest())')
+		[ "$actual" = "$expected" ] || printf '%s\n' "$file"
+	done)
 if [ -n "$data" ]; then
 	note "data files staged:"
 	printf '  %s\n' $data >&2
-	note "imaging, meshes, solver decks and serialised arrays are not distributed; unstage them."
+	note "restricted data, trained weights or unapproved/changed arrays staged; unstage them."
 fi
 
 # 2. Notebook outputs. This is where the anatomy renderings were: stripping the

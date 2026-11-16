@@ -20,6 +20,7 @@ directory with its own documentation and environment specification.
 | Directory | What it does | Status |
 |---|---|---|
 | [`aorta-mesh-morphing/`](aorta-mesh-morphing/) | Boundary-condition generation and parameter calibration for mesh-morphing CFD of the thoracic aorta: cine-CTA wall-motion tracking, inlet velocity from 4D flow MRI, wall motion by RBF morphing, Windkessel outlet calibration, wall-stiffness calibration | Released |
+| [`ataa-stress-surrogate/`](ataa-stress-surrogate/) | DNN wall-stress surrogate, synthetic example, and geometry-grouped training/evaluation pipeline; trained weights and clinical data excluded | Prepared for release |
 
 Components are added as they are released.
 

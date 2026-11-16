@@ -1,0 +1,77 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the software component and the accompanying article."
+type: software
+title: "ataa-stress-surrogate: a deep-learning surrogate of ATAA wall mechanics"
+abstract: >-
+  A geometry-grouped deep-learning surrogate that maps a compact description of ascending
+  thoracic aortic aneurysm geometry, material properties, and pressure to nodal stress and
+  deformation-tensor fields. Includes the model definition, scalers, a patient-free synthetic
+  example, and the training and evaluation pipeline; trained weights are intentionally excluded.
+authors:
+  - given-names: João
+    family-names: Vau
+    orcid: https://orcid.org/0009-0002-0533-1303
+  - given-names: Bernardo
+    family-names: Henriques
+    orcid: https://orcid.org/0009-0003-0959-6146
+  - given-names: Tiago
+    family-names: Silva
+    orcid: https://orcid.org/0000-0002-5065-7938
+  - given-names: António C.
+    family-names: Tomás
+    orcid: https://orcid.org/0000-0002-9144-2669
+  - given-names: Pedro
+    family-names: Coelho
+    orcid: https://orcid.org/0000-0001-5185-3335
+  - given-names: Moisés
+    family-names: Brito
+    orcid: https://orcid.org/0000-0002-7024-9958
+  - given-names: Stéphane
+    family-names: Avril
+    orcid: https://orcid.org/0000-0002-8604-7736
+  - given-names: José
+    family-names: Xavier
+    orcid: https://orcid.org/0000-0002-7836-4598
+    email: jmc.xavier@fct.unl.pt
+license: Apache-2.0
+repository-code: https://github.com/josexavier3/AneurysmTool
+url: https://github.com/josexavier3/AneurysmTool/tree/main/ataa-stress-surrogate
+keywords:
+  - ascending thoracic aortic aneurysm
+  - computational solid mechanics
+  - surrogate model
+  - deep learning
+  - uncertainty quantification
+preferred-citation:
+  type: article
+  title: >-
+    A deep neural network surrogate for ascending thoracic aortic aneurysm wall stress:
+    accuracy, uncertainty and domain transfer
+  authors:
+    - given-names: João
+      family-names: Vau
+      orcid: https://orcid.org/0009-0002-0533-1303
+    - given-names: Bernardo
+      family-names: Henriques
+      orcid: https://orcid.org/0009-0003-0959-6146
+    - given-names: Tiago
+      family-names: Silva
+      orcid: https://orcid.org/0000-0002-5065-7938
+    - given-names: António C.
+      family-names: Tomás
+      orcid: https://orcid.org/0000-0002-9144-2669
+    - given-names: Pedro
+      family-names: Coelho
+      orcid: https://orcid.org/0000-0001-5185-3335
+    - given-names: Moisés
+      family-names: Brito
+      orcid: https://orcid.org/0000-0002-7024-9958
+    - given-names: Stéphane
+      family-names: Avril
+      orcid: https://orcid.org/0000-0002-8604-7736
+    - given-names: José
+      family-names: Xavier
+      orcid: https://orcid.org/0000-0002-7836-4598
+  journal: Computer Methods and Programs in Biomedicine
+  year: 2026
+  notes: "Manuscript prepared for submission; add article DOI after publication."
