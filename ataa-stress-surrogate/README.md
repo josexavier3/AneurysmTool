@@ -1,9 +1,8 @@
 # ATAA stress surrogate
 
-This is the `ataa-stress-surrogate` component prepared for the
+This is the `ataa-stress-surrogate` component of the
 [AneurysmTool](https://github.com/josexavier3/AneurysmTool)
-repository. This component is prepared locally and is not yet published on GitHub.
-It accompanies the
+repository. It accompanies the
 manuscript *A deep neural network surrogate for ascending thoracic aortic aneurysm wall
 stress: accuracy, uncertainty and domain transfer*.
 
